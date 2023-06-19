@@ -55,7 +55,6 @@ export default function Home() {
               )
             );
           })}
-          {isLucky && <button>Lucky Bread</button>}
         </div>
         <div className={styles.store}>
           {Object.keys(state).map((tier, idx) => {
