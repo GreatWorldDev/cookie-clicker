@@ -35,26 +35,44 @@ export default function Home() {
 
       <main>
         <div className={styles.clicker}>
+          <h1>{Intl.NumberFormat().format(state.clicks.amount)}</h1>
           <Clicker amount={state.clicks.amount} dispatch={dispatch} />
         </div>
-        <div className={styles.field}></div>
+        <div className={styles.field}>
+          <h2>Welcome to Cookie Clicker!!!</h2>
+          {Object.keys(state).map((tier, idx) => {
+            if (idx === 0) {
+              return null;
+            }
+            const { cost, amount, image } = state[tier];
+            return (
+              amount > 0 && (
+                <div key={tier} className={styles.fieldItems}>
+                  {[...Array(amount)].map((_, index) => (
+                    <img src={image} key={index} />
+                  ))}
+                </div>
+              )
+            );
+          })}
+        </div>
         <div className={styles.store}>
           {Object.keys(state).map((tier, idx) => {
             if (idx === 0) {
               return null;
             }
-            const { cost, amount } = state[tier];
+            const { cost, amount, image } = state[tier];
             return (
-              (state.clicks.amount >= cost || amount > 0) && (
-                <Autoclicker
-                  key={tier}
-                  tier={tier}
-                  amount={amount}
-                  cost={cost}
-                  enabled={state.clicks.amount >= cost}
-                  dispatch={dispatch}
-                />
-              )
+              <Autoclicker
+                key={tier}
+                tier={tier}
+                amount={amount}
+                cost={cost}
+                image={image}
+                active={state.clicks.amount >= cost || amount > 0}
+                enabled={state.clicks.amount >= cost}
+                dispatch={dispatch}
+              />
             );
           })}
         </div>

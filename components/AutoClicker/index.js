@@ -1,31 +1,34 @@
 import { memo } from "react";
+import styles from "./AutoClicker.module.css";
 
-const Autoclicker = memo(({ tier, amount, cost, dispatch, enabled }) => {
-  const buy = () => dispatch({ type: "increase", tier });
-  const sell = () => dispatch({ type: "decrease", tier });
+const Autoclicker = memo(
+  ({ tier, amount, cost, dispatch, enabled, active, image }) => {
+    const buy = () => dispatch({ type: "increase", tier });
+    const sell = () => dispatch({ type: "decrease", tier });
 
-  return (
-    <div className="clicker">
-      <div className="info">
-        <h2>{`${Intl.NumberFormat().format(amount)} × ${tier}clicker`}</h2>
-        <p>{`this ${tier}clicker buys and sells for ${Intl.NumberFormat().format(
-          cost
-        )}`}</p>
-      </div>
-      <button
-        className={`buy ${enabled ? undefined : "disabled"}`}
-        type="button"
-        onClick={buy}
+    return (
+      <div
+        className={`${styles.autoclicker} ${!active && styles.notactive}`}
+        onClick={active ? buy : () => {}}
       >
-        {`buy ${tier}clicker`}
-      </button>
-      {amount > 0 && (
-        <button className="sell" type="button" onClick={sell}>
-          -
-        </button>
-      )}
-    </div>
-  );
-});
+        <div className={styles.right}>
+          <img src={image} />
+          <div className="info">
+            <h1>{tier}</h1>
+            <h2>🍪{Intl.NumberFormat().format(cost)}</h2>
+          </div>
+        </div>
+        <div>
+          <h2>{Intl.NumberFormat().format(amount)}</h2>
+        </div>
+        {amount > 0 && (
+          <button className={styles.sell} type="button" onClick={sell}>
+            Sell
+          </button>
+        )}
+      </div>
+    );
+  }
+);
 
 export default Autoclicker;

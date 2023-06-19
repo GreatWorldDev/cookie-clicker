@@ -10,6 +10,25 @@
 .clicker {
   width: 300px;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: start;
+  background-color: rgb(70, 34, 192, 0.6);
+  height: 100%;
+  position: relative;
+  align-items: center;
+  border-right: 3px solid black;
+}
+
+.clicker h1 {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+  background-color: rgba(233, 218, 10, 0.5);
 }
 
 .clicker button {
@@ -25,55 +44,24 @@
   cursor: pointer;
 }
 
-.clicker button:before {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  padding: 10px;
-  border-radius: 50%;
-  background: conic-gradient(
-    #ff53bb,
-    #0000 30deg 120deg,
-    #00f8d3 150deg 180deg,
-    #0000 210deg 300deg,
-    #ff53bb 330deg
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: intersect;
+@keyframes wiggle {
+  0% {
+    transform: scale(1.05);
+  }
+  25% {
+    transform: translate(1.1);
+  }
+  75% {
+    transform: translate(1.1);
+  }
+  100% {
+    transform: translate(1.05);
+  }
 }
 
-.clicker button:after {
-  content: "";
-  position: absolute;
-  inset: -100px;
-  background: radial-gradient(
-      200px at left 400px top 150px,
-      #ff53bb 100%,
-      #0000
-    ),
-    radial-gradient(200px at right 400px bottom 150px, #00f8d3 100%, #0000);
-  filter: blur(120px);
-  opacity: 0.5;
-}
-
-.clicker button:before,
-.clicker button:after {
-  transition: 0.5s, 99999s 99999s transform;
-}
-.clicker button:hover {
-  box-shadow: 0 0 0 1px #666;
-}
-
-.clicker button:before,
-.clicker button:after {
-  transform: rotate(36000deg);
-  transition: 0.5s, 600s linear transform;
-}
-
-.clicker button:before {
-  background-color: #222;
-  border: 2px solid #333;
+.wiggle:hover {
+  animation: wiggle 1000ms infinite;
+  animation-timing-function: linear;
 }
 
 .clicker button > img {
@@ -81,17 +69,45 @@
   left: -2px;
   position: relative;
   top: 2px;
-  width: 594px;
+  width: 100%;
   opacity: 0.9;
+  box-shadow: 0 0 80px #4432c0d6;
 }
 
 .field {
   width: 100%;
+  background-color: #344820;
+}
+
+.field h2 {
+  color: white;
+  font-size: 43px;
+  text-align: center;
+}
+
+.fieldItems {
+  width: 100%;
+  background-color: black;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 3px solid yellowgreen;
+}
+
+.fieldItems > img {
+  width: 50px;
+  height: 50px;
 }
 
 .store {
   width: 300px;
   flex-shrink: 0;
+  background-color: rgb(13 29 50 / 37%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  border-left: 3px solid black;
 }
 
 .title a {
