@@ -55,6 +55,7 @@ export default function Home() {
               )
             );
           })}
+          {isLucky && <button>Lucky Bread</button>}
         </div>
         <div className={styles.store}>
           {Object.keys(state).map((tier, idx) => {
@@ -69,7 +70,7 @@ export default function Home() {
                 amount={amount}
                 cost={cost}
                 image={image}
-                active={state.clicks.amount >= cost || amount > 0}
+                active={state.clicks.amount >= cost}
                 enabled={state.clicks.amount >= cost}
                 dispatch={dispatch}
               />
