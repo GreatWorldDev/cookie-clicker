@@ -7,6 +7,15 @@
   height: 100vh;
 }
 
+.container main *::-webkit-scrollbar {
+  display: none;
+}
+
+.container h1,
+.container h2 {
+  margin: 0;
+}
+
 .clicker {
   width: 300px;
   flex-shrink: 0;
@@ -19,6 +28,7 @@
   position: relative;
   align-items: center;
   border-right: 3px solid black;
+  background: url("/images/leftbg.png");
 }
 
 .clicker h1 {
@@ -77,6 +87,28 @@
 .field {
   width: 100%;
   background-color: #344820;
+  background: url("/images/right.png");
+  background-size: 100% 100%;
+  padding: 0 15px;
+  overflow: auto;
+  position: relative;
+}
+
+.goldenButton {
+  width: 50px;
+  background: transparent;
+  border: none;
+  height: 50px;
+  border-radius: 50px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.goldenButton img {
+  width: 110%;
+  height: 110%;
+  object-position: center;
+  border-radius: 50px;
 }
 
 .field h2 {
@@ -91,7 +123,10 @@
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  border: 3px solid yellowgreen;
+  background-size: contain;
+  background-repeat: repeat-x;
+  border: 2px black solid;
+  margin: 5px 0;
 }
 
 .fieldItems > img {
@@ -108,6 +143,7 @@
   justify-content: flex-end;
   color: white;
   border-left: 3px solid black;
+  overflow: auto;
 }
 
 .title a {

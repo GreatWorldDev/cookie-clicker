@@ -19,6 +19,14 @@
   text-transform: capitalize;
 }
 
+.right h1 {
+  font-size: 20px;
+}
+
+.right h2 {
+  font-size: 15px;
+}
+
 .notactive {
   cursor: not-allowed;
   opacity: 0.5;
