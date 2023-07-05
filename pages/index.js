@@ -86,11 +86,12 @@ export default function Home() {
 
       <main>
         <div className={styles.clicker}>
-          <h1>{Intl.NumberFormat().format(state.clicks.amount)}</h1>
+          <h1>{Intl.NumberFormat().format(Math.floor(state.clicks.amount))}</h1>
           <Clicker amount={state.clicks.amount} dispatch={dispatch} />
         </div>
         <div className={styles.field}>
           <h2>Welcome to Cookie Clicker!!!</h2>
+          <h2>🍪 Mark - Repath 🍪 Hope your good feedback!</h2>
           {Object.keys(state).map((tier, idx) => {
             if (idx === 0 || idx === 1) {
               return null;
